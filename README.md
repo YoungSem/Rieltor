@@ -37,4 +37,4 @@
 ### **Команда проекта**  
 - **Телегин Семен** - YoungSem
 - **Обмолов Антон** - kp404
-- **Дмитриченко Георгий** GeorgyDevelopedHelloWorld
+- **Дмитриченко Георгий** - GeorgyDevelopedHelloWorld
