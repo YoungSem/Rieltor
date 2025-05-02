@@ -27,22 +27,40 @@
 
 ### **Установка проекта**  
 Работа через терминал:
-- Клонирукм репозиторий: 
+- Клонирукм репозиторий:
+```
 git clone https://github.com/YoungSem/Rieltor.git
-- Переходим в папку проекта: 
+```
+- Переходим в папку проекта:
+``` 
 cd rieltor
+```
 - Создаем и активируем виртуальное окружение:
+```
 python -m venv venv
+```
+```
 venv\Scripts\activate
+```
 - Установить зависимости
+```
 pip install -r requirements.txt
+```
 - Применение миграций
+```
 python manage.py makemigrations
+```
+```
 python manage.py migrate
+```
 - Создать суперпользователя (пригодится для того что бы зайти в админку)
+```
 python manage.py createsuperuser
+```
 - Запустить сервер
+```
 python manage.py runserver
+```
 
 После запуска сервера:
 Ссылка на главную страницу - http://127.0.0.1:8000/
