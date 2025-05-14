@@ -1,8 +1,10 @@
 .idea
 .vscode
 .env
+venv
 **/migrations/*.pyc
 **/migrations/__pycache__
 __pycache__/
 **/migrations/*.py
 .sqlite3
+realtor_site/db.sqlite3
