@@ -42,9 +42,9 @@ python -m venv venv
 ```
 venv\Scripts\activate
 ```
-- Установить зависимости
+- Установить Django
 ```
-pip install -r requirements.txt
+pip install django
 ```
 - Применение миграций
 ```
