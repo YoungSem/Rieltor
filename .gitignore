@@ -8,3 +8,4 @@ realtor_site/db.sqlite3
 !**/migrations/__init__.py
 **/migrations/__pycache__/
 **/migrations/*.pyc
+realtor_site/images/*

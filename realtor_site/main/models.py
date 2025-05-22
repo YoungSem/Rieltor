@@ -34,15 +34,15 @@ class Flat(models.Model):
         return f"{self.house}: {self.number}"
 
 class Jk_media(models.Model):
-    path = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     jk = models.ForeignKey(Jk, on_delete=models.CASCADE, related_name='media')
 
 class House_media(models.Model):
-    path = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     house = models.ForeignKey(House, on_delete=models.CASCADE, related_name='media')
 
 class Flat_media(models.Model):
-    path = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     flat = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name='media')
 
 class Application(models.Model):
