@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Список ЖК тест</h1>
+    <ul>
+        {% for jk in jk_list %}
+            <li>{{ jk.name }} ({{ jk.area }}) - {{ jk.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
