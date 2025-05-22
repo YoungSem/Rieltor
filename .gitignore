@@ -2,8 +2,9 @@
 .vscode
 .env
 venv
-**/migrations/*.pyc
-**/migrations/__pycache__
 __pycache__/
 .sqlite3
 realtor_site/db.sqlite3
+!**/migrations/__init__.py
+**/migrations/__pycache__/
+**/migrations/*.pyc
