@@ -1,14 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Главная</title>
-</head>
-<body>
-    <h1>Список ЖК тест</h1>
-    <ul>
-        {% for jk in jk_list %}
-            <li>{{ jk.name }} ({{ jk.area }}) - {{ jk.description }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Список ЖК</h1>
+
+<div class="row">
+    {% for jk in jk_list %}
+    <div class="col-md-4 col-lg-3">
+        <div class="card jk-card">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/3ab3c466307739.5b116d36a49e8.png" class="card-img-top" alt="{{ jk.name }}">
+            <span class="badge area-badge text-white">{{ jk.area }}</span>
+            <div class="card-body">
+                <h5 class="card-title">{{ jk.name }}</h5>
+                <p class="card-text">{{ jk.description }}</p>
+                <a href="#" class="btn btn-primary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
