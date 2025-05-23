@@ -1,1 +1,41 @@
-Тест старницы
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'welcome' %}">Главная</a></li>
+            <li class="breadcrumb-item active">Дома в ЖК {{ jk.name }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Дома в ЖК "{{ jk.name }}"</h1>
+
+    <div class="row">
+        {% for house in houses %}
+        <div class="col-md-4 col-lg-3">
+            <div class="card jk-card">
+                {% if house.media.first %}
+                <img src="{{ house.media.first.image.url }}" class="card-img-top" alt="{{ house.adres }}">
+                {% else %}
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/3ab3c466307739.5b116d36a49e8.png" class="card-img-top" alt="{{ house.adres }}">
+                {% endif %}
+                <span class="badge area-badge text-white">{{ house.area }}</span>
+                <div class="card-body">
+                    <h5 class="card-title">{{ house.adres }}</h5>
+                    <p class="card-text">{{ house.description|truncatewords:30 }}</p>
+                    <p class="card-text"><small class="text-muted">Этажей: {{ house.floors }}</small></p>
+                    <a href="{% url 'flats_list' house.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                В данном ЖК пока нет домов
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
