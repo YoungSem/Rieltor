@@ -20,3 +20,7 @@ def flats_list(request, house_id):
         'flats': flats,
         'house': house
     })
+
+def flat_detail(request, flat_id):
+    flat = get_object_or_404(Flat, id=flat_id)
+    return render(request, 'flat_detail.html', {'flat': flat})
