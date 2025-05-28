@@ -1,5 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Jk, House, Flat
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import Jk, House, Flat, Application
+from .forms import ApplicationForm
 
 def welcome(request):
     jk_list = Jk.objects.all()
@@ -20,3 +22,17 @@ def flats_list(request, house_id):
         'flats': flats,
         'house': house
     })
+
+def application_create(request):
+    if request.method == 'POST':
+        form = ApplicationForm(request.POST)
+        if form.is_valid():
+            application = form.save(commit=False)
+            if not application.flat:  # Если квартира не выбрана
+                application.flat = None
+            application.save()
+            messages.success(request, 'Ваша заявка успешно отправлена!')
+            return redirect('welcome')
+    else:
+        form = ApplicationForm()
+    return render(request, 'application_form.html', {'form': form})
