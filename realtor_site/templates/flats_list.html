@@ -30,39 +30,7 @@
                         <li><small class="text-muted">Этаж: {{ flat.floor }}</small></li>
                         <li><small class="text-muted">Комнат: {{ flat.rooms }}</small></li>
                     </ul>
-                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#applicationModal{{ flat.id }}">
-                        Оставить заявку
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Модальное окно для заявки -->
-        <div class="modal fade" id="applicationModal{{ flat.id }}" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Заявка на квартиру {{ flat.number }}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="post" action="{% url 'application_create' flat.id %}">
-                            {% csrf_token %}
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Ваше имя</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Телефон</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Отправить заявку</button>
-                        </form>
-                    </div>
+                    <a href="{% url 'flat_detail' flat.id %}" class="btn btn-primary">Подробнее</a>
                 </div>
             </div>
         </div>
@@ -75,4 +43,5 @@
         {% endfor %}
     </div>
 </div>
+{% endblock %}
 {% endblock %}
