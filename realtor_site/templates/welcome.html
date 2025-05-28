@@ -11,7 +11,7 @@
                 {% if jk.media.first %}
                 <img src="{{ jk.media.first.image.url }}" class="card-img-top" alt="{{ jk.name }}">
                 {% else %}
-                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/3ab3c466307739.5b116d36a49e8.png" class="card-img-top" alt="{{ jk.name }}">
+                <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="{{ jk.name }}">
                 {% endif %}
                 <span class="badge area-badge text-white">{{ jk.area }}</span>
                 <div class="card-body">
