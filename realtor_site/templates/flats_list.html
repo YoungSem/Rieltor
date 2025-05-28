@@ -1,1 +1,46 @@
-тест старницы
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'welcome' %}">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'houses_list' house.jk.id %}">Дома в ЖК {{ house.jk.name }}</a></li>
+            <li class="breadcrumb-item active">Квартиры в доме {{ house.adres }}</li>
+        </ol>
+    </nav>
+
+    <h1 class="mb-4">Квартиры в доме "{{ house.adres }}"</h1>
+
+    <div class="row">
+        {% for flat in flats %}
+        <div class="col-md-4 col-lg-3">
+            <div class="card jk-card">
+                {% if flat.media.first %}
+                <img src="{{ flat.media.first.image.url }}" class="card-img-top" alt="Квартира {{ flat.number }}">
+                {% else %}
+                <img src="{% static 'images/default.jpg' %}" class="card-img-top" alt="Квартира {{ flat.number }}">
+                {% endif %}
+                <span class="badge area-badge text-white">{{ flat.area }}</span>
+                <div class="card-body">
+                    <h5 class="card-title">Квартира {{ flat.number }}</h5>
+                    <p class="card-text">{{ flat.description|truncatewords:30 }}</p>
+                    <ul class="list-unstyled">
+                        <li><small class="text-muted">Этаж: {{ flat.floor }}</small></li>
+                        <li><small class="text-muted">Комнат: {{ flat.rooms }}</small></li>
+                    </ul>
+                    <a href="{% url 'flat_detail' flat.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-info">
+                В данном доме пока нет квартир
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
